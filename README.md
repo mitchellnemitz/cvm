@@ -112,7 +112,7 @@ $ cvm remove 2.x
 Removed Composer version 2.x
 ```
 
-### cvmrc
+### .cvmrc
 
 If you don't pass a version to cvm, it will attempt to locate a `.cvmrc` file in the current directory and treat the contents as the intended version instead. This is a convenient way to explicitly declare are share your composer version for a given project.
 
