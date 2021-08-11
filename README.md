@@ -1,10 +1,10 @@
 # CVM
 
-Composer Version Manager - A collection of shell functions to manage multiple versions of Composer the easy way.
+Composer Version Manager - A script to manage multiple versions of Composer the easy way.
 
 ### Compatibility
 
-Developed and tested on macOS, should work on most Linux distributions, probably not working on Windows.
+Developed and tested on macOS, should work on most Linux distributions, probably not functional on Windows.
 
 ### Install
 
