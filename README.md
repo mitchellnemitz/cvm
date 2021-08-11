@@ -112,6 +112,18 @@ $ cvm remove 2.x
 Removed Composer version 2.x
 ```
 
+### cvmrc
+
+If you don't pass a version to cvm, it will attempt to locate a `.cvmrc` file in the current directory and treat the contents as the intended version instead. This is a convenient way to explicitly declare are share your composer version for a given project.
+
+The simplest way to generate a `.cvmrc` for your project is to echo the chosen version and redirect the output to a file:
+
+```sh
+echo "1.x" > .cvmrc
+```
+
+Now whenever you open your project, run `cvm use` and the version declared in your `.cvmrc` file will be selected. If the correct version of composer isn't installed, run `cvm install` instead.
+
 ### Development
 
 Install the script as normal, make changes to `$HOME/.cvm/cvm.sh`, and run `cvm --reload` before testing.
