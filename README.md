@@ -40,7 +40,7 @@ To update, pull the latest changes from master
 ```sh
 cd "$HOME/.cvm"
 git fetch origin master
-git pull origin/master
+git pull origin master
 ```
 
 ### Usage
