@@ -271,31 +271,31 @@ cvm() {
                 ;;
             "current")
                 cvm_current
-                return 0
+                return $?
                 ;;
             "install")
                 shift
                 cvm_install $@
-                return 0
+                return $?
                 ;;
             "update")
                 shift
                 cvm_update $@
-                return 0
+                return $?
                 ;;
             "remove" | "uninstall")
                 shift
                 cvm_remove $@
-                return 0
+                return $?
                 ;;
             "use")
                 shift
                 cvm_use $@
-                return 0
+                return $?
                 ;;
             "list")
                 cvm_list
-                return 0
+                return $?
                 ;;
             *)
                 echo "Unknown Option: ${PARAM}"
