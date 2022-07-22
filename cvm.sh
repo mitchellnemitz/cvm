@@ -19,6 +19,7 @@ cvm_usage() {
     echo "  update            Update an installed version of Composer"
     echo "  remove            Remove a specific version of Composer"
     echo "  use               Use a specific version of Composer"
+    echo "  exec              Run composer version based on .cvmrc"
     echo "  list              Show installed versions of Composer"
 }
 
@@ -118,6 +119,14 @@ cvm_use() {
     export CVM_COMPOSER_PHAR="$FILE"
 
     echo "Using $(composer --version)"
+}
+
+cvm_exec() {
+    VERSION=$(cvm_get_version "")
+    PHP_CLI=$(cvm_get_php_cli)
+
+    echo "Using $(composer --version)"
+    ${PHP_CLI} ${CVM_DIR}/versions/${VERSION}/composer.phar $@
 }
 
 cvm_install() {
@@ -311,6 +320,11 @@ cvm() {
             "use")
                 shift
                 cvm_use $@
+                return $?
+                ;;
+            "exec")
+                shift
+                cvm_exec $@
                 return $?
                 ;;
             "list")
