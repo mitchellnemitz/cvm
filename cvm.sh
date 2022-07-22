@@ -55,6 +55,20 @@ cvm_get_version() {
     echo "$VERSION"
 }
 
+cvm_get_php_cli() {
+    PHP_CLI="php"
+
+    if [ -f ".php-version" ]; then
+        PHP_CLI="php$(cat .php-version)"
+    fi
+
+   if [ -f "$(which $PHP_CLI)" ]; then 
+       echo "$PHP_CLI"
+   else
+      echo "php"
+   fi
+}
+
 cvm_reload() {
     source "${CVM_DIR}/cvm.sh"
 }
@@ -80,6 +94,7 @@ cvm_get_url() {
 
 cvm_use() {
     VERSION=$(cvm_get_version "$1")
+    PHP_CLI=$(cvm_get_php_cli)
 
     if [ "$VERSION" = "system" ]; then
         unalias composer 2>/dev/null
@@ -93,7 +108,7 @@ cvm_use() {
     FILE="${CVM_DIR}/versions/${VERSION}/composer.phar"
 
     if [ -f "$FILE" ]; then
-        alias composer="$FILE"
+        alias composer="$PHP_CLI $FILE"
     else
         echo "Composer version ${VERSION} is not installed"
         return 1
