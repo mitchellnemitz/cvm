@@ -25,8 +25,13 @@ cvm_usage() {
 cvm_get_version() {
     VERSION="$1"
 
-    if [ "$VERSION" = "" ] && [ -f ".cvmrc" ]; then
-        VERSION=$(cat .cvmrc)
+   CVMRCPATH=$(pwd)  
+   while [[ "$CVMRCPATH" != "" && ! -e "$CVMRCPATH/.cvmrc" ]]; do
+       CVMRCPATH=${CVMRCPATH%/*}
+   done
+
+    if [ "$VERSION" = "" ] && [ "$CVMRCPATH" != "" ] ; then
+        VERSION=$(cat $CVMRCPATH/.cvmrc)
     fi
 
     case "$VERSION" in
