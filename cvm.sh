@@ -125,7 +125,6 @@ cvm_exec() {
     VERSION=$(cvm_get_version "")
     PHP_CLI=$(cvm_get_php_cli)
 
-    echo "Using $(composer --version)"
     ${PHP_CLI} ${CVM_DIR}/versions/${VERSION}/composer.phar $@
 }
 
